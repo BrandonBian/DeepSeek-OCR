@@ -76,18 +76,21 @@ micromamba install -c nvidia/label/cuda-11.8.0 cuda-toolkit
 # Using Torch 2.4.1 with Cuda 11.8
 pip install torch==2.4.1+cu118 torchvision==0.19.1+cu118 torchaudio==2.4.1+cu118 --index-url https://download.pytorch.org/whl/cu118
 
-# Using GCC 11
+# [OPTIONAL] Using GCC 11
 micromamba install -c conda-forge gcc_linux-64=11 gxx_linux-64=11
 
 ln -s $CONDA_PREFIX/bin/x86_64-conda-linux-gnu-gcc $CONDA_PREFIX/bin/gcc
 ln -s $CONDA_PREFIX/bin/x86_64-conda-linux-gnu-g++ $CONDA_PREFIX/bin/g++
 export PATH=$CONDA_PREFIX/bin:$PATH
 
-# Install VLLM
+# [OPTIONAL] Install VLLM
 pip install vllm-0.8.5+cu118-cp38-abi3-manylinux1_x86_64.whl
 
 # Install requirements
-pip install -r requirements.txt
+pip install transformers==4.46.3
+pip install addict
+pip install einops
+pip install easydict
 ```
 
 >Our environment is cuda11.8+torch2.6.0.
